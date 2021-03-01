@@ -16,9 +16,7 @@ public class BaseSteps {
 
     @Step("Search for repository")
     public void searchForRepository(final String repository) {
-        $(".header-search-input").click();
-        $(".header-search-input").sendKeys(repository);
-        $(".header-search-input").submit();
+        $(".header-search-input").setValue(repository).submit();
     }
 
     @Step("Go to {repository} from search")

@@ -1,9 +1,10 @@
 package com.tests;
 
+import static com.codeborne.selenide.Condition.*;
+
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -17,25 +18,21 @@ public class PureSelenideGitTest {
     void testIssueSearchGitPositive() {
 
         open("https://github.com");
-        $(".header-search-input").click();
-        $(".header-search-input").sendKeys(REPOSITORY);
-        $(".header-search-input").submit();
+        $(".header-search-input").setValue(REPOSITORY).submit();
         $(By.linkText(REPOSITORY)).click();
         $(withText("Issues")).click();
-        $(withText(ISSUE_NUMBER)).should(Condition.exist);
+        $(withText(ISSUE_NUMBER)).should(Condition.visible);
 
     }
 
     @Test
-    void testIssueSearchGitNegative() {
+    void issueSearchGitTestShouldFail() {
 
         open("https://github.com");
-        $(".header-search-input").click();
-        $(".header-search-input").sendKeys(REPOSITORY);
-        $(".header-search-input").submit();
+        $(".header-search-input").setValue(REPOSITORY).submit();
         $(By.linkText(REPOSITORY)).click();
         $(withText("Issase")).click();
-        $(withText(ISSUE_NUMBER)).should(Condition.exist);
+        $(withText(ISSUE_NUMBER)).should(Condition.visible);
 
     }
 

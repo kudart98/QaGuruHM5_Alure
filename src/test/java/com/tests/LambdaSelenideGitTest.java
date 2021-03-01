@@ -28,16 +28,13 @@ public class LambdaSelenideGitTest {
         });
 
         step("Find repo " + REPOSITORY, () -> {
-            $(".header-search-input").click();
-            $(".header-search-input").sendKeys(REPOSITORY);
-            $(".header-search-input").submit();
-
+            $(".header-search-input").setValue(REPOSITORY).submit();
         });
 
         step("Make sure if Issue" + ISSUE_NUMBER + " is present", () -> {
             $(By.linkText(REPOSITORY)).click();
             $(withText("Issues")).click();
-            $(withText(ISSUE_NUMBER)).should(Condition.exist);
+            $(withText(ISSUE_NUMBER)).should(Condition.visible);
         });
 
     }
@@ -45,21 +42,19 @@ public class LambdaSelenideGitTest {
     @Test
     @Tags({@Tag("classicTest"), @Tag("negative")})
     @DisplayName("Issue search at Git Hub - negative")
-    void testIssueSearchGitNegative() {
+    void issueSearchGitTestShouldFail() {
         step("Open target website", () -> {
             open("https://github.com");
         });
 
         step("Find repo" + REPOSITORY, () -> {
-            $(".header-search-input").click();
-            $(".header-search-input").sendKeys(REPOSITORY);
-            $(".header-search-input").submit();
+            $(".header-search-input").setValue(REPOSITORY).submit();
         });
 
         step("Make sure if Issue" + ISSUE_NUMBER + " is present", () -> {
             $(By.linkText(REPOSITORY)).click();
             $(withText("Issase")).click();
-            $(withText(ISSUE_NUMBER)).should(Condition.exist);
+            $(withText(ISSUE_NUMBER)).should(Condition.visible);
         });
     }
 }
