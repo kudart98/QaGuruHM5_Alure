@@ -31,7 +31,7 @@ public class BaseSteps {
 
     @Step("Make sure if Issue + {number} is present")
     public void shouldSeeIssueWithNumber(final String number) {
-        $(withText(number)).should(Condition.exist);
+        $(withText(number)).shouldBe(Condition.visible);
     }
 
 }

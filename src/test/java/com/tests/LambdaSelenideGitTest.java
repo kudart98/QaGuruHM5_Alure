@@ -54,7 +54,7 @@ public class LambdaSelenideGitTest {
         step("Make sure if Issue" + ISSUE_NUMBER + " is present", () -> {
             $(By.linkText(REPOSITORY)).click();
             $(withText("Issase")).click();
-            $(withText(ISSUE_NUMBER)).should(Condition.visible);
+            $(withText(ISSUE_NUMBER)).shouldBe(Condition.visible);
         });
     }
 }

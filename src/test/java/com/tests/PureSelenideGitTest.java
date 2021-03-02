@@ -21,7 +21,7 @@ public class PureSelenideGitTest {
         $(".header-search-input").setValue(REPOSITORY).submit();
         $(By.linkText(REPOSITORY)).click();
         $(withText("Issues")).click();
-        $(withText(ISSUE_NUMBER)).should(Condition.visible);
+        $(withText(ISSUE_NUMBER)).shouldBe(Condition.visible);
 
     }
 
@@ -32,7 +32,7 @@ public class PureSelenideGitTest {
         $(".header-search-input").setValue(REPOSITORY).submit();
         $(By.linkText(REPOSITORY)).click();
         $(withText("Issase")).click();
-        $(withText(ISSUE_NUMBER)).should(Condition.visible);
+        $(withText(ISSUE_NUMBER)).shouldBe(Condition.visible);
 
     }
 
